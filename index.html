@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assets redirecting...</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      p {
+        font-family: monospace;
+        font-size: 14px;
+        margin: 20px 22px;
+      }
+    </style>
+    <script>
+      fetch("data.json")
+      .then(res => res.json())
+      .then(data => {
+        data.find(el => {
+          if (el.path == window.location.pathname) { // assets available
+            if (el.type == "static") {
+              window.location.replace(`https://assets-static.vixniv.com${window.location.pathname}`)
+            }
+          } else {
+            document.getElementById("loading").innerText = "Asset not found"
+          }
+        })
+      })
+      .catch(err => {
+        console.error(err)
+      })
+    </script>
+  </head>
+  <body>
+    <p id="loading">Please wait...</p>
+  </body>
+</html>
