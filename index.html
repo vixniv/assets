@@ -15,7 +15,7 @@
       }
     </style>
     <script>
-      fetch("data.json")
+      fetch("https://raw.githubusercontent.com/vixniv/assets/refs/heads/dev/data.json")
         .then((res) => res.json())
         .then((data) => {
           const path = window.location.pathname;
