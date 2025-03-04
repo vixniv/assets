@@ -1,6 +1,4 @@
-[
-  {
-    "path": "/jpg-1.jpg",
-    "type": "static"
-  }
-]
+{
+  "/test-1.jpg": "static",
+  "/test-2.jpg": "static"
+}
