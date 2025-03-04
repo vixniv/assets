@@ -11,26 +11,24 @@
       p {
         font-family: monospace;
         font-size: 14px;
-        margin: 20px 22px;
+        margin: 16px 18px;
       }
     </style>
     <script>
-      fetch("data.json")
-      .then(res => res.json())
-      .then(data => {
-        data.find(el => {
-          if (el.path == window.location.pathname) { // assets available
-            if (el.type == "static") {
-              window.location.replace(`https://assets-static.vixniv.com${window.location.pathname}`)
-            }
+      fetch("https://raw.githubusercontent.com/vixniv/assets/refs/heads/dev/data.json")
+        .then((res) => res.json())
+        .then((data) => {
+          const path = window.location.pathname;
+          console.log(path);
+          if (data[path] == "static") {
+            window.location.replace(`https://assets-static.vixniv.com${path}`);
           } else {
-            document.getElementById("loading").innerText = "Asset not found"
+            document.getElementById("loading").innerText = "Asset not found...";
           }
         })
-      })
-      .catch(err => {
-        console.error(err)
-      })
+        .catch((err) => {
+          console.error(err);
+        });
     </script>
   </head>
   <body>
